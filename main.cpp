@@ -55,7 +55,7 @@ int main(){
 	vect1.push_back(s[4]);
 	cout<<"DATABASE_DISPALYED"<<endl;
 	print_vector(vect1);
-	int n=size(vect1);
+	int n=vect1.size();
 	cout<<endl;
 	cout<<"For sorting the Database with respect to names"<<endl;
 	name_sorting(vect1);
@@ -109,13 +109,12 @@ void delete_record(vector<Database> &vect1 , int key){
 		
 	}*/
 	for (auto i = vect1.begin(); i != vect1.end(); i++) {
-        if (vect1[i]==key) {
+        if (i->rollno==key) {
             vect1.erase(i);
             
         }
     }
- 
-		
+	
 	
 }
 
