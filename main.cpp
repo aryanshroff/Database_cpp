@@ -16,6 +16,7 @@ void student_search(vector <Database> vect1,int n,int key);
 void delete_record(vector<Database> &vect1 , int key);
 
 
+
 class Database
 {
 	public:
@@ -40,12 +41,18 @@ class Database
 
 int main(){
 	int command{0};//0 will be exit button to get out of a function
-	Database s[5];
+	Database s[10];
 	s[0].getdata("Aryan         ",30,"d2");
 	s[1].getdata("Samruddhi ",31,"d2");
 	s[2].getdata("Abhinav     ",32,"d2");
 	s[3].getdata("Kevin          ",63,"d3");
 	s[4].getdata("Anish          ",16,"d1");
+	s[5].getdata("Vivek          ",11,"d1");
+	s[6].getdata("Ravindra    ",03,"d1");
+	s[7].getdata("Tesjaswini  ",49,"d3");
+	s[8].getdata("Shardul       ",33,"d2");
+	s[9].getdata("Abhijeet     ",40,"d3");
+	
 	
 	vector <Database> vect1;
 	vect1.push_back(s[0]);
@@ -53,37 +60,54 @@ int main(){
 	vect1.push_back(s[2]);
 	vect1.push_back(s[3]);
 	vect1.push_back(s[4]);
-	cout<<"DATABASE_DISPALYED"<<endl;
+	vect1.push_back(s[5]);
+	vect1.push_back(s[6]);
+	vect1.push_back(s[7]);
+	vect1.push_back(s[8]);
+	vect1.push_back(s[9]);
+	cout<<"                                                  DATABASE_DISPALYED                                                                             "<<endl;
 	print_vector(vect1);
-	int n=vect1.size();
+	int n=size(vect1);
 	cout<<endl;
-	cout<<"For sorting the Database with respect to names"<<endl;
-	name_sorting(vect1);
 	cout<<endl;
-	cout<<"For sorting the Database with respect to roll numbers"<<endl;
-	rollno_sorting(vect1);
-	
-	cout<<"press 1 for  searching a student 0 to bypass "<<endl;
+	cout<<"press 1 for sorting the database with respect to names and 0 to bypass "<<endl;
 	cin>>command;
 	while(command==1){
+		cout<<"Sorting the Database with respect to names"<<endl;
+		name_sorting(vect1);
+		cout<<endl;
+		command=0;
+	}
+	cout<<"press 2 for sorting the database with respect to roll numbers and 0 to bypass "<<endl;
+	cin>>command;
+	while(command==2){
+		cout<<"For sorting the Database with respect to roll numbers"<<endl;
+		rollno_sorting(vect1);
+		command=0;
+		cout<<endl;
+	}
+	
+	cout<<"press 3 for  searching a student 0 to bypass "<<endl;
+	cin>>command;
+	while(command==3){
 		int key{0};
 		cout<<"enter the roll number you want to search"<<endl;
 		cin>>key;
 		student_search(vect1,n,key);
-		cout<<"press 1 to continue the search press 0 to terminate "<<endl;
+		cout<<"press 3 to continue the search press 0 to terminate "<<endl;
 		cin>>command;
 		cout<<endl;
 	}
-	cout<<" press 2 to delete a record "<<endl;
+	cout<<" press 4 to delete a record "<<endl;
 	cin>>command;
-	while(command==2){
+	while(command==4){
 		int key{0};
 		cout<<" Enter the roll number of the student"<<endl;
 		cin>>key;
 		delete_record(vect1,key);
 		
 		
-		cout<<"press 2  to continue deleteing the records and 0 to terminate "<<endl;
+		cout<<"press 4  to continue deleteing the records and 0 to terminate "<<endl;
 		cin>>command;
 	}
 	
@@ -94,28 +118,13 @@ int main(){
 	return 0;
 }
 void delete_record(vector<Database> &vect1 , int key){
-	
-
-
-
-/*	for(Database element:vect1){
-		if(element.rollno==key){
-			element.name="0";
-			element.rollno=0;
-			element.batch="0";
-			print_vector(vect1);
-			return ;
-		}
-		
-	}*/
 	for (auto i = vect1.begin(); i != vect1.end(); i++) {
         if (i->rollno==key) {
             vect1.erase(i);
             
         }
-    }
-	
-	
+	}
+	print_vector(vect1);
 }
 
 void operator <<(ostream &cout_val , Database &object_val){
